@@ -1,0 +1,287 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0e9e9e0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.icon {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 20px;
+}
+.icon_header {
+  vertical-align: middle;
+  line-height: 1px;
+  font-size: 26px;
+}
+.icon, .icon_header {
+  margin-right: 5px;
+}
+
+.close_icon {
+  color: #fff;
+  margin-left: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    'sidebar header header header'
+    'sidebar main main main';
+  height: 100vh;
+}
+
+/* Header  */
+header {
+  grid-area: header;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+  position: relative;
+  margin-left: 15rem;
+}
+
+.header-left { 
+  position: absolute;
+  right: 7rem;
+  background-color: #fffcfc;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+}
+.header-left input {
+  border: none;
+}
+
+.menu-icon {
+  display: none;
+}
+/* End Header  */
+
+/* Sidebar  */
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #000;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  margin: 0rem 2rem;
+  padding: 0 10px;
+  border-radius: 20px;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px 0px 30px;
+  margin-bottom: 30px;
+  color:#fff;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+  font-size: 18px;
+}
+
+.sidebar-list-item:hover {
+  cursor: pointer;
+}
+
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #a59d9d;
+}
+.sidebar-list-item > a:hover {
+  text-decoration: none;
+  color: #f1eaea;
+}
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+.sidebar-footer{
+  display: flex;
+  flex-direction: column;
+  align-items: start; 
+  position: relative;
+  top: 7rem;
+  bottom: 1rem;
+  margin: 0 1.5rem;
+}
+
+.sidebar-footer p{
+  color: #aaa1a1;
+  font-size: 12px;
+}
+
+/* End Sidebar  */
+
+
+/* Main  */  
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  color: rgba(12, 10, 10, 0.95);
+  margin-left: 15rem;
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+.card:first-child {
+  background-color: #dcfcdcbe;
+}
+
+.card:nth-child(2) {
+  background-color: hwb(26 69% 5% / 0.589);
+}
+
+.card:nth-child(3) {
+  background-color: #f8cff1a9;
+}
+
+.card:nth-child(4) {
+  background-color: #c2befa8a;
+}
+
+.card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-inner > .card_icon {
+  font-size: 25px;
+  
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 60px;
+  height: 500px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+}
+.chart-activities{
+  margin: 0 2rem;
+}
+.chart-activities p:nth-of-type(1){
+  font-size: 20px;
+  font-weight: 600;
+}
+/* End Main  */
+
+
+/* Medium <= 992px */
+  
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      'header'
+      'main';
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+  header h2{
+    display: none;
+  }
+  header,.main-container{
+    margin:auto;
+  }
+}
+/* Small <= 768px */
+  
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+  header,.main-container{
+    margin:auto;
+  }
+}
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+  .header-left {
+    display: none;
+  }
+  header,.main-container{
+    margin:auto;
+  }
+  header h2{
+    display: none;
+  }
+}
